@@ -23,6 +23,7 @@ const Login = () => {
     onSuccess: (data) => {
       dispatch(userActions.setUserInfo(data));
       localStorage.setItem("account", JSON.stringify(data));
+      toast.success("Login Successfully");
     },
     onError: (error) => {
       toast.error(error.message);

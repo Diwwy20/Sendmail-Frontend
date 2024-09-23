@@ -22,6 +22,7 @@ const RegisterPage = () => {
         onSuccess: (data) => {
             dispatch(userActions.setUserInfo(data));
             localStorage.setItem('account', JSON.stringify(data));
+            toast.success("Registration Successfully");
         },
         onError: (error) => {
             toast.error(error.message);
