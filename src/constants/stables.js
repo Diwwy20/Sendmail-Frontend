@@ -1,4 +1,4 @@
-const UPLOAD_FOLDER_BASE_URL = "https://sendemail-backend-api.onrender.com/uploads/"
+const UPLOAD_FOLDER_BASE_URL = "https://sendemail-backend-api.up.railway.app/uploads/"
 
 const stables = { UPLOAD_FOLDER_BASE_URL };
 

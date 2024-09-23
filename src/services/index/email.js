@@ -7,7 +7,7 @@ export const sendMail = async ({ formData }) => {
                 'Content-Type': 'multipart/form-data',
             },
         };
-        const { data } = await axios.post('https://sendemail-backend-api.onrender.com/api/mail/send-mail', formData, config);
+        const { data } = await axios.post('https://sendemail-backend-api.up.railway.app/api/mail/send-mail', formData, config);
         return data;
     } catch (error) {
         if(error.response && error.response.data.message){
