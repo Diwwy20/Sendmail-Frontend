@@ -5,11 +5,8 @@ import { useMutation } from "@tanstack/react-query";
 import toast from 'react-hot-toast';
 
 import MainLayout from '../../components/MainLayout'
-import { useSelector } from 'react-redux';
 
 const Mail = () => {
-
-    const userState = useSelector((state) => state.user);
 
       // Mutation
     const { mutate, isLoading } = useMutation({
