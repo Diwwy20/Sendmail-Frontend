@@ -5,6 +5,7 @@ import { IoMdMenu, IoMdClose, IoMdArrowDropdown } from "react-icons/io";
 import { images } from "../constants";
 import { useDispatch, useSelector } from "react-redux";
 import { logout } from '../store/actions/user'
+import toast from 'react-hot-toast';
 
 const Header = () => {
   const navigate = useNavigate();
@@ -21,6 +22,8 @@ const Header = () => {
 
   const logoutHandler = () => {
     dispatch(logout());
+    toast.success('Logout Successfully');
+    navigate('/');
   }
 
   return (
