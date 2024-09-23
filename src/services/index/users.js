@@ -2,7 +2,7 @@ import axios from 'axios';
 
 export const signUp = async ({ name, email, password, }) => {
     try {
-        const { data } = await axios.post('/api/user/register', {
+        const { data } = await axios.post('https://sendemail-backend-api.onrender.com/api/user/register', {
             name,
             email,
             password,
@@ -18,7 +18,7 @@ export const signUp = async ({ name, email, password, }) => {
 
 export const login = async ({ email, password }) => {
     try {
-        const { data } = await axios.post('/api/user/login', {
+        const { data } = await axios.post('https://sendemail-backend-api.onrender.com/api/user/login', {
             email,
             password
         });
@@ -38,7 +38,7 @@ export const getUserProfile = async ({ token }) => {
                 Authorization: `Bearer ${token}`,
             },
         };
-        const { data } = await axios.get('/api/user/profile', config);
+        const { data } = await axios.get('https://sendemail-backend-api.onrender.com/api/user/profile', config);
         return data;
     } catch (error) {
         if(error.response && error.response.data.message){
@@ -55,7 +55,7 @@ export const updateProfile = async ({ token, userData }) => {
                 Authorization: `Bearer ${token}`,
             },
         };
-        const { data } = await axios.put('/api/user/update/profile', userData, config);
+        const { data } = await axios.put('https://sendemail-backend-api.onrender.com/api/user/update/profile', userData, config);
         return data;
     } catch (error) {
         if(error.response && error.response.data.message){
@@ -73,7 +73,7 @@ export const updateProfilePicture = async ({ token, formData }) => {
                 Authorization: `Bearer ${token}`,
             },
         };
-        const { data } = await axios.put('/api/user/update/profile/picture', formData, config);
+        const { data } = await axios.put('https://sendemail-backend-api.onrender.com/api/user/update/profile/picture', formData, config);
         return data;
     } catch (error) {
         if(error.response && error.response.data.message){
