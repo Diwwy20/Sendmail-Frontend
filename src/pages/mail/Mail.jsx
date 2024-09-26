@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useForm } from "react-hook-form";
 import { sendMail } from "../../services/index/email";
 import { useMutation } from "@tanstack/react-query";
@@ -7,6 +7,17 @@ import toast from 'react-hot-toast';
 import MainLayout from '../../components/MainLayout'
 
 const Mail = () => {
+
+    const [selectedFile, setSelectedFile] = useState(null); 
+
+    const handleFileChange = (e) => {
+        const file = e.target.files[0];
+        if (file) {
+            setSelectedFile(file); 
+        } else {
+            setSelectedFile(null);
+        }
+    };
 
       // Mutation
     const { mutate, isLoading } = useMutation({
@@ -19,16 +30,18 @@ const Mail = () => {
             formData.append('email', email);
             formData.append('subject', subject);
             formData.append('explain', explain);
-            formData.append('file', file);
             formData.append('position', position);
             formData.append('message', message)
-            
+            if(file){
+                formData.append('file', file);
+            }
 
             return sendMail({ formData })
         },
         onSuccess: () => {
             toast.success("Send Email Successfully");
             reset();
+            setSelectedFile(null);
         },
         onError: (error) => {
             toast.error(error.message);
@@ -75,11 +88,10 @@ const Mail = () => {
 
     const submitHandler = (data) => {
         const { firstName, lastName, address, phone, email, position, message } = data;
-        const subject = `สมัครฝึกงานในตำแหน่ง ${position}`;
+        const subject = `Apply for an internship in a ${position} position`;
         const explain = `เรียน ฝ่ายบุคคล บริษัท อินเทิร์นจ๊อบ จำกัด
                         ${message}`;
-        const file = data.file[0]; 
-        mutate({ firstName, lastName, address, phone, email, subject, explain, message, file, position });
+        mutate({ firstName, lastName, address, phone, email, subject, explain, message, file: selectedFile, position });
     };
 
   return (
@@ -233,32 +245,34 @@ const Mail = () => {
                                 </p>
                             )}                            
                         </div>
-                        
-                        {/* <div className='w-full px-3 md:mb-0'>
-                            <label 
-                            htmlFor="email"
-                            className='block tracking-wide text-gray-700 text-base font-bold mb-2'
-                            >
-                                Email : {userState.userInfo?.email}
-                            </label>                        
-                        </div> */}
                         <div className='w-full px-3 md:mb-0'>
-                            <label 
-                            htmlFor="email"
-                            className='block tracking-wide text-gray-700 text-base font-bold mb-2'
+                            <label
+                                htmlFor="file"
+                                className='flex flex-col tracking-wide text-gray-700 text-base font-bold mb-2'
                             >
-                                Resume 
+                                Resume
                             </label>
-                            <input 
-                            type="file" 
-                            id='file'
-                            accept='application/pdf'
-                            {...register("file", { required: true })}
-                            />                        
-                        </div>  
 
+                            <input
+                                type="file"
+                                id="file"
+                                accept="application/pdf"
+                                {...register("file", { required: true })}
+                                className="hidden"
+                                onChange={handleFileChange} 
+                            />
 
-                        {/* Radio buttons for selecting position */}
+                            <button
+                                type="button"
+                                className="bg-aqua hover:bg-blue-400 text-white font-bold py-2 px-4 rounded"
+                                onClick={() => document.getElementById('file').click()} 
+                            >
+                                Choose File
+                            </button>
+
+                            <span className="mt-2 ml-2 text-md text-gray-700">{selectedFile ? selectedFile.name : 'No file chosen'}</span>
+                        </div>
+
                         <div className='w-full px-3 my-6 md:mb-0'>
                             <label className='block tracking-wide text-gray-700 text-base font-bold mb-2'>
                                 Position
@@ -268,7 +282,9 @@ const Mail = () => {
                                     <input
                                         type="radio"
                                         value="Web Developer"
-                                        {...register("position")}
+                                        {...register("position", {
+                                            required: 'Please select a position'
+                                        })}
                                         className="form-radio"
                                     />
                                     <span className="ml-2">Web Developer</span>
@@ -277,7 +293,9 @@ const Mail = () => {
                                     <input
                                         type="radio"
                                         value="Full Stack Developer"
-                                        {...register("position")}
+                                        {...register("position", {
+                                            required: 'Please select a position'
+                                        })}
                                         className="form-radio"
                                     />
                                     <span className="ml-2">Full Stack Developer</span>
@@ -286,12 +304,19 @@ const Mail = () => {
                                     <input
                                         type="radio"
                                         value="Backend Developer"
-                                        {...register("position")}
+                                        {...register("position", {
+                                            required: 'Please select a position'
+                                        })}
                                         className="form-radio"
                                     />
                                     <span className="ml-2">Backend Developer</span>
                                 </label>
                             </div>
+                            {errors.position?.message && (
+                                <p className="text-red-500 text-xs my-2">
+                                    {errors.position?.message}
+                                </p>
+                            )}   
                         </div>
                         <div className='w-full px-3 my-6 md:mb-0'>
                             <label 
