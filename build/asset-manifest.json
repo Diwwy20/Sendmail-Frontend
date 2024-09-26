@@ -1,18 +1,18 @@
 {
   "files": {
-    "main.css": "/static/css/main.21049f63.css",
-    "main.js": "/static/js/main.f2e75d04.js",
+    "main.css": "/static/css/main.6d827d06.css",
+    "main.js": "/static/js/main.b3ddee69.js",
     "static/media/position1.jpg": "/static/media/position1.7ce8cc39781c2c0432f0.jpg",
     "static/media/position3.jpg": "/static/media/position3.8988079659455bc3f40d.jpg",
     "static/media/position2.jpg": "/static/media/position2.24665ce717ef37264dfc.jpg",
     "static/media/Hero.png": "/static/media/Hero.bef297f81da57125500a.png",
     "static/media/internjobs-high-resolution-logo-transparent.png": "/static/media/internjobs-high-resolution-logo-transparent.8de2c27a218b5148559c.png",
     "index.html": "/index.html",
-    "main.21049f63.css.map": "/static/css/main.21049f63.css.map",
-    "main.f2e75d04.js.map": "/static/js/main.f2e75d04.js.map"
+    "main.6d827d06.css.map": "/static/css/main.6d827d06.css.map",
+    "main.b3ddee69.js.map": "/static/js/main.b3ddee69.js.map"
   },
   "entrypoints": [
-    "static/css/main.21049f63.css",
-    "static/js/main.f2e75d04.js"
+    "static/css/main.6d827d06.css",
+    "static/js/main.b3ddee69.js"
   ]
 }
