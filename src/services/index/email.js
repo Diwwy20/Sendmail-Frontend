@@ -8,6 +8,7 @@ export const sendMail = async ({ formData }) => {
             },
         };
         const { data } = await axios.post('https://sendmail-backend-api.up.railway.app/api/mail/send-mail', formData, config);
+        // const { data } = await axios.post('http://localhost:5000/api/mail/send-mail', formData, config);
         return data;
     } catch (error) {
         if(error.response && error.response.data.message){
