@@ -206,9 +206,9 @@ const Mail = () => {
                         <div className='w-full px-3 mb-6 md:mb-0'>
                             <label 
                             htmlFor="email"
-                            className='block tracking-wide text-gray-700 text-base font-bold mb-2'
+                            className='tracking-wide text-gray-700 text-base font-bold mb-2 flex flex-row items-center'
                             >
-                                Email
+                                Email <p className='text-md text-red-500'>&nbsp;&nbsp;&nbsp;(*กรุณาระบุ อีเมล จริง)</p>
                             </label>
                             <input 
                             type="email" 
