@@ -66,8 +66,8 @@ const ProfilePage = () => {
         password: "",
       },
       values: {
-        name: profileIsLoading ? "" : profileData.name,
-        email: profileIsLoading ? "" : profileData.email,
+        name: profileIsLoading ? "" : profileData?.name,
+        email: profileIsLoading ? "" : profileData?.email,
       },
       mode: 'onChange',
     });
