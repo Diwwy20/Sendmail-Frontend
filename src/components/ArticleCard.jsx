@@ -1,6 +1,6 @@
 import React from 'react'
 
-const ArticleCard = ({ position, image }) => {
+const ArticleCard = ({ position, image, caption }) => {
   return (
     <div className='rounded-xl overflow-hidden shadow-[rgba(7,_65,_210,_0.1)_0px_9px_30px] w-full md:w-[calc(50%-20px)] lg:w-[calc(33.33%-21px)]'>
         <div>
@@ -16,7 +16,7 @@ const ArticleCard = ({ position, image }) => {
                     {position}
                 </h2>
                 <p className='text-dark-light mt-3 text-sm md:text-lg'>
-                    Caption
+                    {caption}
                 </p>
             </div>
         </div>
